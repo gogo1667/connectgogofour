@@ -49,10 +49,14 @@ class SubmitRow extends React.Component {
   render() {
     let slots = [];
     for (let y = 0; y < 7; y++) {
-      slots.push(<SubmitSlot columnIdentifier={y} />);
+      slots.push(<SubmitSlot columnIdentifier={y} onClick={() => alert(y)}/>);
     }
     return <div className="submit-board-row">{slots}</div>;
   }
+}
+
+function SubmitSlot(props) {
+  return <button class="submit-slot" columnIdentifier={props.columnIdentifier} onClick={props.onClick}></button>;
 }
 
 class Row extends React.Component {
@@ -65,13 +69,10 @@ class Row extends React.Component {
   }
 }
 
-function SubmitSlot(props) {
-  return <div class="submit-slot" columnIdentifier={props.columnIdentifier}></div>;
-}
-
 function Slot(props) {
   return <div class="slot" coordinates={props.coordinates}></div>;
 }
+
 // ========================================
 
 ReactDOM.render(<Game />, document.getElementById("root"));
